@@ -37,11 +37,11 @@
             <tbody>
             <?php
             /* @var $task Task */
-            foreach ($tasks as $key => $task) :?>
+            foreach ($tasks as $task) :?>
                 <tr>
                     <td><?= $task->getDescription() ?></td>
                     <td><?= $task->isDone() ? 'Выполнена' : 'Не выполнена' ?></td>
-                    <td><a href="?controller=task&action=setDone&id=<?= $key ?>">Выполнить</a></td>
+                    <td><a href="?controller=task&action=setDone&id=<?= $task->getId() ?>">Выполнить</a></td>
                 </tr>
             <?php endforeach;
             ?>

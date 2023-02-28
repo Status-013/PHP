@@ -1,5 +1,6 @@
 <?php
-$error = null;
+/* @var $pdo PDO */
+
 if (isset($_GET['action'])) {
 
     if ($_GET['action'] === 'logout') {
@@ -12,7 +13,8 @@ if (isset($_GET['action'])) {
 
             ['username' => $username, 'password' => $password] = $_POST;
 
-            $user = UserProvider::getByUsernameAndPassword($username, $password);
+            $userProvider = new UserProvider($pdo); // Передаем аргумент
+            $user = $userProvider->getByUsernameAndPassword($username, $password);
 
             if (is_null($user)) {
                 $error = 'Пользователь с указанными учетными данными не найден';
